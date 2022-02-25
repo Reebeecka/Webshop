@@ -5,7 +5,6 @@
 export const environment = {
   production: false,
   productsUrl: 'https://medieinstitutet-wie-products.azurewebsites.net/api/products',
-  omdbUrl: 'http://omdbapi.com?apikey=5d0854c3&s=star'
 };
 
 /*

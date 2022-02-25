@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { IProducts } from '../models/IProducts';
 
 @Injectable({
@@ -15,7 +16,7 @@ export class ProductsFetchService {
   constructor(private http: HttpClient) { }
 
   getProducts(){
-    this.http.get<IProducts[]>("https://medieinstitutet-wie-products.azurewebsites.net/api/products").subscribe((data:IProducts[]) => {
+    this.http.get<IProducts[]>(environment.productsUrl).subscribe((data:IProducts[]) => {
       this.products.next(data);
     })
   }}

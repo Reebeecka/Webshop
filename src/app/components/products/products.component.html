@@ -1,9 +1,11 @@
 <section class="products">
 
-    <div *ngFor="let product of products let i = index">
+    <div *ngFor="let product of products let i = index;">
         <a routerLink="/details/{{product.id}}">
             <h2>{{product.name}}</h2>
             <img src = {{product.imageUrl}} alt="picture of movie"/>
+            <p>{{product.price}} :-</p>
         </a>
+        <button>Add to Cart</button>
     </div>
 </section>
