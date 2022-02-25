@@ -1,0 +1,9 @@
+<section class="products">
+
+    <div *ngFor="let product of products let i = index">
+        <a routerLink="/details/{{product.id}}">
+            <h2>{{product.name}}</h2>
+            <img src = {{product.imageUrl}} alt="picture of movie"/>
+        </a>
+    </div>
+</section>
