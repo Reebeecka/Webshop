@@ -12,16 +12,7 @@ import { SendProductInformationService } from 'src/app/services/send-product-inf
 export class ProductDetailComponent implements OnInit {
   producttoshow:IProducts[] = [];
   productId: number = 0;
-  product:IProducts = {
-    id: 0,
-    name: "",
-    description: "",
-    price: 0,
-    imageUrl: "",
-    year: 0,
-    added: new Date(),
-    productCategory: [{ categoryID: 0, catergory: "" }]
-  }
+
 
   constructor(private route: ActivatedRoute, private IDrecive: SendProductInformationService, private checkout: CheckoutService) {
     // this.IDrecive.theproduct$.subscribe((data) =>{

@@ -1,0 +1,9 @@
+<p>checkout works!</p>
+
+<div *ngFor="let product of Test.mylist let i = index">
+    <p>{{product.name}}</p>
+    <p>{{product.price}} :-</p>
+    <button (click)="removeItem(i)">Remove item from Cart</button>
+</div>
+
+<p>{{sum}}</p>
