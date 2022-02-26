@@ -27,10 +27,7 @@ export class ProductsComponent implements OnInit {
     this.fetch.getProducts();
   }
 
-  addToCart(ProductID:number){
-    this.numberOfProductsInCart = this.numberOfProductsInCart + 1; 
-    console.log(this.numberOfProductsInCart);
-  }
+
   
 
 

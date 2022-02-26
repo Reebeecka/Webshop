@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IProducts } from 'src/app/models/IProducts';
+import { CheckoutService } from 'src/app/services/checkout.service';
 import { SendProductInformationService } from 'src/app/services/send-product-information.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { SendProductInformationService } from 'src/app/services/send-product-inf
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
-  producttoshow:any;
+  producttoshow:IProducts[] = [];
   productId: number = 0;
   product:IProducts = {
     id: 0,
@@ -22,7 +23,7 @@ export class ProductDetailComponent implements OnInit {
     productCategory: [{ categoryID: 0, catergory: "" }]
   }
 
-  constructor(private route: ActivatedRoute, private IDrecive: SendProductInformationService) {
+  constructor(private route: ActivatedRoute, private IDrecive: SendProductInformationService, private checkout: CheckoutService) {
     // this.IDrecive.theproduct$.subscribe((data) =>{
     //   this.product=data;
     //   console.log(this.product)
@@ -38,11 +39,16 @@ export class ProductDetailComponent implements OnInit {
       //Subscribing to observer
       this.IDrecive.theproduct$.subscribe((productFromService) => {
         this.producttoshow = productFromService;
-        this.product = this.producttoshow;
+        console.log(this.producttoshow);
       });
   
       //Calls the function in service and sending the productID
       this.IDrecive.findcorrects(this.productId);
 
   }
+  addToCart(){
+    this.checkout.addToCheckout(this.producttoshow);
+  }
 }
+
+
