@@ -1,6 +1,6 @@
 import { registerLocaleData } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { IProducts } from 'src/app/models/IProducts';
 import { ProductsFetchService } from 'src/app/services/products-fetch.service';
@@ -14,6 +14,8 @@ import { environment } from 'src/environments/environment';
 })
 export class ProductsComponent implements OnInit {
   products: IProducts[] = [];
+  numberOfProductsInCart: number = 0;
+  test:number = 0;
 
   constructor(private fetch: ProductsFetchService, private http: HttpClient, private IDsend: SendProductInformationService) { }
 
@@ -25,7 +27,15 @@ export class ProductsComponent implements OnInit {
     this.fetch.getProducts();
   }
 
+  addToCart(ProductID:number){
+    this.numberOfProductsInCart = this.numberOfProductsInCart + 1; 
+    console.log(this.numberOfProductsInCart);
+  }
+  
+
+
 
 }
+
 
 
