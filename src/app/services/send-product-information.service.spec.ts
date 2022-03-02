@@ -1,16 +1,19 @@
-import { TestBed } from '@angular/core/testing';
+///DONT NEED
 
-import { SendProductInformationService } from './send-product-information.service';
 
-describe('SendProductInformationService', () => {
-  let service: SendProductInformationService;
+// import { TestBed } from '@angular/core/testing';
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(SendProductInformationService);
-  });
+// import { SendProductInformationService } from './send-product-information.service';
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-});
+// describe('SendProductInformationService', () => {
+//   let service: SendProductInformationService;
+
+//   beforeEach(() => {
+//     TestBed.configureTestingModule({});
+//     service = TestBed.inject(SendProductInformationService);
+//   });
+
+//   it('should be created', () => {
+//     expect(service).toBeTruthy();
+//   });
+// });

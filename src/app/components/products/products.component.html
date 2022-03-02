@@ -1,10 +1,50 @@
-<section class="products">
-
-    <div *ngFor="let product of products let i = index;">
-        <a routerLink="/details/{{product.id}}">
-            <h2>{{product.name}}</h2>
-            <img src = {{product.imageUrl}} alt="picture of movie"/>
-            <p>{{product.price}} :-</p>
-        </a>
+<div>
+    <ng-container *ngFor="let category of categories">
+        <p (click)="chosenCategory = category.id; searchResult.length = 0">{{category.name}}</p>
+    </ng-container>
+    <p (click)="chosenCategory = 0; searchResult.length = 0">All products</p>
+    <div>
+        <input type="text" placeholder="MovieTitle" #searchText/>
+        <button (click)="search(searchText.value)">Search</button>
     </div>
+</div>
+
+
+
+<section class="products">
+    <ng-container *ngIf="searchResult.length > 0">
+        <div *ngFor="let product of searchResult">
+            <a routerLink="/details/{{product.id}}">
+                <h2>{{product.name}}</h2>
+                <img src={{product.imageUrl}} alt="picture of movie" />
+                <p>{{product.price}} :-</p>
+            </a>
+        </div>
+    </ng-container>
+<ng-container *ngIf="searchResult.length === 0">
+    <ng-container *ngIf="chosenCategory === 0">
+        <div *ngFor="let product of products">
+            <a routerLink="/details/{{product.id}}">
+                <h2>{{product.name}}</h2>
+                <img src={{product.imageUrl}} alt="picture of movie" />
+                <p>{{product.price}} :-</p>
+            </a>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="chosenCategory > 0">
+        <ng-container *ngFor="let product of products">
+            <ng-container *ngFor="let categories of product.productCategory">
+                <div *ngIf="categories.categoryId === chosenCategory">
+                    <a routerLink="/details/{{product.id}}">
+                        <h2>{{product.name}}</h2>
+                        <img src={{product.imageUrl}} alt="picture of movie" />
+                        <p>{{product.price}} :-</p>
+                    </a>
+                </div>
+            </ng-container>
+        </ng-container>
+    </ng-container>
+</ng-container>
+
 </section>

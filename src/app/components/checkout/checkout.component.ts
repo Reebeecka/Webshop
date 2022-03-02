@@ -9,35 +9,32 @@ import { CheckoutService } from 'src/app/services/checkout.service';
 })
 export class CheckoutComponent implements OnInit {
   productInCheckout: Array<Custom> = [];
-  sum: number = 0;
+  sum:number = 0;
   Test = {
     mylist: this.productInCheckout,
     length: 0
   }
+  buttonClicked: boolean = false;
 
   constructor(private checkout: CheckoutService) { }
 
   ngOnInit(): void {
     this.Test = this.checkout.checkoutPage();
-
-    this.sumCart(this.Test.mylist)
-
-    // for(let i = 0; i < this.Test.length; i++){
-    //   this.sum += this.Test.mylist[i].price;
-    //   console.log(this.sum);
-    // }
   }
+
   removeItem(i:number){
     this.Test.mylist.splice(i,1);
-    this.sum -= this.Test.mylist[i].price; 
+    this.checkout.removeInBasket();
+  }
+  locationsSum() {
+    this.sum = this.Test.mylist.map(product => product.price).reduce((a, b) => a + b, 0);
+    return this.sum;
+  }
+  sendInformationToService(){
+    this.checkout.recive(this.sum, this.Test.mylist)
   }
 
-  sumCart(productsincart:any){
-    console.log(productsincart)
-    for(let i = 0; i < this.Test.length; i++){
-      this.sum += productsincart[i].price;
-      console.log(this.sum);
-    }
-  }
-
+  // formDone(){
+  //   this.buttonClicked = true;
+  // }
 }

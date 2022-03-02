@@ -1,3 +1,8 @@
 
-<p>{{productId}}</p>
-<button (click)="addToCart()">Add to Cart</button>
+<ng-container *ngFor="let p of products">
+    <div *ngIf="p.id === productId">
+        <p>{{p.name}}</p>
+        <p>{{p.id}}</p>
+        <button (click)="addToCart(p)">Add to Cart</button>
+    </div>
+</ng-container>

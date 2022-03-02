@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IProducts } from 'src/app/models/IProducts';
 import { CheckoutService } from 'src/app/services/checkout.service';
-import { SendProductInformationService } from 'src/app/services/send-product-information.service';
+import { ProductsFetchService } from 'src/app/services/products-fetch.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -10,11 +10,11 @@ import { SendProductInformationService } from 'src/app/services/send-product-inf
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
-  producttoshow:IProducts[] = [];
+  products:IProducts[] = [];
   productId: number = 0;
 
 
-  constructor(private route: ActivatedRoute, private IDrecive: SendProductInformationService, private checkout: CheckoutService) {
+  constructor(private route: ActivatedRoute, private checkout: CheckoutService, private Fetch: ProductsFetchService) {
     // this.IDrecive.theproduct$.subscribe((data) =>{
     //   this.product=data;
     //   console.log(this.product)
@@ -25,20 +25,26 @@ export class ProductDetailComponent implements OnInit {
 
     //Finding the //ID parameter from Route
     this.route.params.subscribe((p) => {
-      this.productId = +p["id"];})
+      this.productId = +p["id"];});
 
-      //Subscribing to observer
-      this.IDrecive.theproduct$.subscribe((productFromService) => {
-        this.producttoshow = productFromService;
-        console.log(this.producttoshow);
+      this.Fetch.products$.subscribe(ProductFromService => {
+        this.products = ProductFromService;
       });
+
+      this.Fetch.getProducts();
+
+      // //Subscribing to observer
+      // this.IDrecive.theproduct$.subscribe((productFromService) => {
+      //   this.producttoshow = productFromService;
+      //   console.log(this.producttoshow);
+      // });
   
-      //Calls the function in service and sending the productID
-      this.IDrecive.findcorrects(this.productId);
+      // //Calls the function in service and sending the productID
+      // this.IDrecive.findcorrects(this.productId);
 
   }
-  addToCart(){
-    this.checkout.addToCheckout(this.producttoshow);
+  addToCart(theProduct:IProducts){
+    this.checkout.addToCheckout(theProduct);
   }
 }
 

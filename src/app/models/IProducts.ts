@@ -1,4 +1,4 @@
-import { ICategory } from "./ICategory";
+import { ICategory, IProductCategory } from "./ICategory";
 
 export interface IProducts {
     id: number
@@ -8,5 +8,5 @@ export interface IProducts {
     imageUrl: string
     year: number
     added: Date
-    productCategory: ICategory[]
+    productCategory: IProductCategory[]
 }

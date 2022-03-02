@@ -1,37 +1,39 @@
-import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
-import { IProducts } from '../models/IProducts';
-import { ProductsFetchService } from './products-fetch.service';
+//DONT NEED
 
-@Injectable({
-  providedIn: 'root'
-})
-export class SendProductInformationService {
+// import { Injectable } from '@angular/core';
+// import { Subject } from 'rxjs';
+// import { IProducts } from '../models/IProducts';
+// import { ProductsFetchService } from './products-fetch.service';
 
-  allproducts: IProducts[] = [];
-  producttowhow:any;
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class SendProductInformationService {
 
-  private theproduct = new Subject<IProducts[]>();
-  public theproduct$ = this.theproduct.asObservable();
+//   allproducts: IProducts[] = [];
+//   producttowhow:any;
 
-  constructor(private fetch: ProductsFetchService) { }
+//   private theproduct = new Subject<IProducts[]>();
+//   public theproduct$ = this.theproduct.asObservable();
+
+//   constructor(private fetch: ProductsFetchService) { }
 
 
-  findcorrects(productId: number) {
-    //Här kommer ID till oss
+//   findcorrects(productId: number) {
+//     //Här kommer ID till oss
 
-    //Fetching all of API
-    this.fetch.getProducts();
+//     //Fetching all of API
+//     this.fetch.getProducts();
 
-    this.fetch.products$.subscribe((productFromService) => {
-      this.allproducts = productFromService;
+//     this.fetch.products$.subscribe((productFromService) => {
+//       this.allproducts = productFromService;
 
-      //Finding correct id inside object inside array
-      this.producttowhow = this.allproducts.find(e => e.id === productId);
+//       //Finding correct id inside object inside array
+//       this.producttowhow = this.allproducts.find(e => e.id === productId);
 
-      //Send to component
-      this.theproduct.next(this.producttowhow);
-    });
-  }
-}
+//       //Send to component
+//       this.theproduct.next(this.producttowhow);
+//     });
+//   }
+// }
 

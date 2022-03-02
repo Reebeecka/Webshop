@@ -1,13 +1,17 @@
 export class Custom {
-    id: number;
+    id:number;
+    amount: number;
+    productId: number;
     name: string;
     price: number;
-    ImageUrl: string;
+    imageUrl: string;
   
-    constructor(name: string, id: number, price: number, imageUrl: string) {
-      this.name = name;
+    constructor(id:number, amount:number, name: string, productId: number, price: number, imageUrl: string) {
       this.id = id;
+      this.amount = amount;
+      this.name = name;
+      this.productId = productId;
       this.price = price;
-      this.ImageUrl = imageUrl;
+      this.imageUrl = imageUrl;
     }
   }

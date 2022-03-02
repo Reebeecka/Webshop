@@ -1,6 +1,10 @@
 
-
 export interface ICategory {
-    categoryID:number
-    catergory: any
+    id:number
+    name: string
+}
+
+export interface IProductCategory{
+    categoryId: number;
+    category:null;
 }
