@@ -1,16 +1,16 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './components/admin/admin.component';
-import { CheckoutFormComponent } from './components/checkout-form/checkout-form.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { HomeComponent } from './components/home/home.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
-import { ProductsComponent } from './components/products/products.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
-  {path:"", component:ProductsComponent},
+  {path:"", component:HomeComponent},
   {path:"details/:id", component: ProductDetailComponent},
-  {path: "checkout", component: CheckoutComponent},
-  {path:"checkoutForm", component: CheckoutFormComponent},
+  {path: "cart", component: ShoppingCartComponent},
+  {path:"checkoutForm", component: CheckoutComponent},
   {path: "admin", component: AdminComponent}
 ];
 

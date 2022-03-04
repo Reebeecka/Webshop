@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Custom } from 'src/app/models/TestClass';
-import { CheckoutService } from 'src/app/services/checkout.service';
+import { FormBuilder, Validators } from '@angular/forms';
+import { apiClass } from 'src/app/models/apiClass';
+import { CheckoutService } from 'src/app/services/checkout/checkout.service';
 
 @Component({
   selector: 'app-checkout',
@@ -8,33 +9,31 @@ import { CheckoutService } from 'src/app/services/checkout.service';
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit {
-  productInCheckout: Array<Custom> = [];
-  sum:number = 0;
-  Test = {
-    mylist: this.productInCheckout,
-    length: 0
-  }
-  buttonClicked: boolean = false;
 
-  constructor(private checkout: CheckoutService) { }
+  userForm = this.fb.group({
+    name: ['',[Validators.required, Validators.minLength(2)]],
+    email: ['',[Validators.required,Validators.email]],
+    paymentMethod: ['',[Validators.required]]
+  });
+
+  orders: apiClass[] = [];
+
+  formSent:boolean = false;
+  constructor(private fb: FormBuilder, private checkout: CheckoutService) { }
 
   ngOnInit(): void {
-    this.Test = this.checkout.checkoutPage();
   }
 
-  removeItem(i:number){
-    this.Test.mylist.splice(i,1);
-    this.checkout.removeInBasket();
-  }
-  locationsSum() {
-    this.sum = this.Test.mylist.map(product => product.price).reduce((a, b) => a + b, 0);
-    return this.sum;
-  }
-  sendInformationToService(){
-    this.checkout.recive(this.sum, this.Test.mylist)
+  handleSubmit(){
+    let name = this.userForm.get("name")?.value;
+    let email = this.userForm.get("email")?.value;
+    let paymentMethod = this.userForm.get('paymentMethod')?.value;
+    let formInString:string = "Name:" + name + "  Mail:" + email;
+
+    this.formSent = true;
+
+    this.checkout.send(formInString, paymentMethod)
+    .subscribe(order => this.orders.push(order));
   }
 
-  // formDone(){
-  //   this.buttonClicked = true;
-  // }
 }

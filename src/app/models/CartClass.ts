@@ -1,4 +1,4 @@
-export class Custom {
+export class Cart {
     id:number;
     amount: number;
     productId: number;

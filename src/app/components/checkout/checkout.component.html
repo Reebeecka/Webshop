@@ -1,19 +1,51 @@
+<form *ngIf="!formSent" [formGroup]="userForm" (ngSubmit)="handleSubmit()">
+    <ul>
+        <li>
+            <label class="labelheader">Name: </label>
+            <input type="text" formControlName="name" />
+            <div *ngIf="userForm.get('name')?.errors?.['required']">
+                <span>Enter your full name here</span>
+            </div>
+            <div *ngIf="userForm.get('name')?.errors?.['minlength']">
+                <span>Enter at least 2 characters</span>
+            </div>
+        </li>
 
+        <li>
+            <label class="labelheader">E-mail: </label>
+            <input type="text" formControlName="email" />
+            <div *ngIf="userForm.get('email')?.errors?.['required']">
+                <span>Enter an email address</span>
+            </div>
+            <div *ngIf="userForm.get('email')?.errors?.['email']">
+                <span>Enter a valid email email address</span>
+            </div>
+        </li>
+        <li>
+            <label class="labelheader" id="pay">Payment method</label>
+            <br>
+            <input type="radio" id="paypal" formControlName="paymentMethod" value="Paypal">
+            <label class="radio" for="paypal">Paypal</label><br>
 
-<div *ngFor="let product of Test.mylist let i = index">
-    <p>{{product.name}}</p>
-    <p>{{product.price}} :-</p>
-    <button (click)="removeItem(i)">Remove item from Cart</button>
+            <input type="radio" id="klarna" formControlName="paymentMethod" value="Klarna">
+            <label class="radio" for="klarna">Klarna</label><br>
+
+            <input type="radio" id="bankCard" formControlName="paymentMethod" value="Creditcard">
+            <label class="radio" for="bankCard">Creaditcard</label>
+
+            <div *ngIf="userForm.get('paymentMethod')?.errors?.['required']">
+                <span>Pick one payment method</span>
+            </div>
+
+        </li>
+        <li>
+            <button type="submit" [disabled]="!userForm.valid">Spara</button>
+        </li>
+    </ul>
+</form>
+
+<div class="sent" *ngIf="formSent">
+    <h2>Your order is sent!</h2>
+    <h3>Welcome back!</h3>
+    <a routerLink="">Back to shop</a>
 </div>
-
-<div>
-  Total sum: {{ locationsSum() }}
-</div>
-
-<button (click)="sendInformationToService()" routerLink="/checkoutForm">Procced to payment</button>
-
-<!-- <button (click)="formDone()">Checkout this</button>
-
-<div *ngIf = "buttonClicked">
-  <app-checkout-form></app-checkout-form>
-</div> -->

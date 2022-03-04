@@ -1,7 +1,6 @@
-import { Data } from "@angular/router";
-import { Custom } from "./TestClass";
+import { Cart } from "./CartClass";
 
-export class TEESt {
+export class apiClass {
     id:number;
     companyID:number;
     created:Date;
@@ -9,7 +8,7 @@ export class TEESt {
     paymentMethod:string;
     totalPrice:number;
     status:string;
-    orderRows: Custom[];
+    orderRows: Cart[];
 
     constructor(
         id:number,
@@ -18,7 +17,7 @@ export class TEESt {
         paymentMethod:string,
         totalPrice:number,
         status:string,
-        orderRows: Custom[])
+        orderRows: Cart[])
     {
         this.id = id;
         this.companyID = companyID;

@@ -1,8 +1,15 @@
-
 <ng-container *ngFor="let p of products">
-    <div *ngIf="p.id === productId">
-        <p>{{p.name}}</p>
-        <p>{{p.id}}</p>
+    <div class="details" *ngIf="p.id === productId">
+        <h2>{{p.name}}</h2>
+        <p class="year">{{p.year}}</p>
+        <div class="div"> 
+            <img src={{p.imageUrl}}>
+            <div>
+                <p>{{p.description}}</p>
+                 <p class="price">{{p.price}} :-</p>
+            </div>
+    </div>
         <button (click)="addToCart(p)">Add to Cart</button>
+        <div routerLink="" class="backToShop"></div>
     </div>
 </ng-container>

@@ -1,0 +1,8 @@
+<nav>
+    <a routerLink="">Home</a>
+    <a routerLink="/admin">Admin</a>
+    <a routerLink="/cart">Cart</a>
+    <div *ngIf="itemsInBasket > 0" class="itemsInBasket">
+        <p>{{itemsInBasket}}</p>
+    </div>
+</nav >

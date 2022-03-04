@@ -9,4 +9,8 @@ describe('CheckoutService', () => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(CheckoutService);
   });
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
 });

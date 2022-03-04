@@ -1,0 +1,29 @@
+button {
+    border: none;
+    padding: 10px;
+    background-color: #ef798a;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    &:active {
+        background-color: #e7586e;
+    }
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 1rem;
+    .order {
+        width: 30%;
+        padding: 10px;
+        border:2px solid #ef798a;
+        border-radius: 10px;
+        .test {
+            margin-top: -20px;
+            display: flex;
+        }
+    }
+}

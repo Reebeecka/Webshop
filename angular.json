@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "WebshopRebecka": {
+    "WebshopRebeckaLarsson": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/webshop-rebecka",
+            "outputPath": "dist/webshop-rebecka-larsson",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "WebshopRebecka:build:production"
+              "browserTarget": "WebshopRebeckaLarsson:build:production"
             },
             "development": {
-              "browserTarget": "WebshopRebecka:build:development"
+              "browserTarget": "WebshopRebeckaLarsson:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "WebshopRebecka:build"
+            "browserTarget": "WebshopRebeckaLarsson:build"
           }
         },
         "test": {
@@ -107,5 +107,5 @@
       }
     }
   },
-  "defaultProject": "WebshopRebecka"
+  "defaultProject": "WebshopRebeckaLarsson"
 }
