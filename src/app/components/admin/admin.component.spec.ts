@@ -1,5 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FetchService } from 'src/app/services/fetch/fetch.service';
 import { AdminComponent } from './admin.component';
 
 describe('AdminComponent', () => {
@@ -8,7 +9,9 @@ describe('AdminComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminComponent ]
+      declarations: [ AdminComponent ],
+      imports: [HttpClientModule],
+      //providers: [{provide: FetchService, useClass: MockFetchService}]
     })
     .compileComponents();
   });
@@ -22,4 +25,7 @@ describe('AdminComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it("should get orders from service", ()=>{
+     expect(component.orders.length).toBe(3);
+   })
 });
