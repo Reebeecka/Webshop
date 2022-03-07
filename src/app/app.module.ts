@@ -10,6 +10,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { HomeComponent } from './components/home/home.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { HomeComponent } from './components/home/home.component';
     NavigationComponent,
     ProductDetailComponent,
     HomeComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

@@ -23,4 +23,7 @@ describe('NavigationComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it("itemsInBasket should start on 0", ()=>{
+    expect(component.itemsInBasket).toBe(0);
+  })
 });

@@ -23,4 +23,7 @@ describe('ShoppingCartComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it("sum should start on 0", ()=>{
+    expect(component.sum).toBe(0);
+  });
 });
